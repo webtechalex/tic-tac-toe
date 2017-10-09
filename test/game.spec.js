@@ -2,6 +2,7 @@ import {expect} from 'chai';
 import deepFreeze from 'deep-freeze';
 
 import game from '../src/reducers';
+import {takeTurn} from '../src/actions';
 
 const initialState = {
   board: null,
@@ -17,6 +18,14 @@ const runningState = {
   draw: false,
   running: true,
   turn: 'X'
+};
+
+const populatedBoardState = {
+  board: ['', '', 'X', 'X', 'O', '', '', 'O', ''],
+  winner: '',
+  draw: false,
+  running: true,
+  turn: 'O'
 };
 
 describe('Test environment', function() {
@@ -58,12 +67,12 @@ describe('Test board updating on each turn', function() {
       running: true,
       turn: 'O'
     };
-    const action = {
-      type: 'TAKE_TURN',
-      board: Array.from(newState.board),
-      turn: 'O'
-    };
-    expect(game(runningState, action).board).to.eql(newState.board);
+
+    expect(game(runningState, takeTurn(3, 'X', runningState.board)).board).to.eql(newState.board);
+    done();
+  });
+  it('should not update the board if a populated cell is clicked', function(done) {
+    expect(game(populatedBoardState, takeTurn(2, 'O', populatedBoardState.board))).to.equal(populatedBoardState);
     done();
   });
 });
