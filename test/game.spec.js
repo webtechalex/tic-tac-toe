@@ -3,6 +3,7 @@ import deepFreeze from 'deep-freeze';
 
 import game from '../src/reducers';
 import {takeTurn} from '../src/actions';
+import {detectWin} from '../src/helpers';
 
 const initialState = {
   board: null,
