@@ -28,6 +28,22 @@ const populatedBoardState = {
   turn: 'O'
 };
 
+const drawnBoardState = {
+  board: ['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 'X'],
+  winner: '',
+  draw: false,
+  running: true,
+  turn: 'O'
+}
+
+const wonBoardState = {
+  board: ['X', 'X', 'O', 'O', 'X', 'O', '', '', 'X'],
+  winner: '',
+  draw: false,
+  running: true,
+  turn: 'O'
+}
+
 describe('Test environment', function() {
   it('should run a test', function(done) {
     expect(true).to.equal(true);
@@ -73,6 +89,32 @@ describe('Test board updating on each turn', function() {
   });
   it('should not update the board if a populated cell is clicked', function(done) {
     expect(game(populatedBoardState, takeTurn(2, 'O', populatedBoardState.board))).to.equal(populatedBoardState);
+    done();
+  });
+});
+
+describe('Test game draw declaration', function() {
+  it('returns draw: true and running: false when the board is complete with no winner', function(done) {
+    const action = {
+      type: 'DECLARE_DRAW',
+      draw: true,
+      running: false
+    };
+    const drawDeclaredState = Object.assign({}, drawnBoardState, {draw: true, running: false});
+    expect(game(drawnBoardState, action)).to.eql(drawDeclaredState);
+    done();
+  });
+});
+
+describe('Test game win declaration', function() {
+  it('returns a winner when one is detected', function(done) {
+    const action = {
+      type: 'DECLARE_WINNER',
+      winner: 'X',
+      running: false
+    }
+    const winDeclaredState = Object.assign({}, wonBoardState, {winner: 'X', running: false})
+    expect(game(wonBoardState, action)).to.eql(winDeclaredState);
     done();
   });
 });

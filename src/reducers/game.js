@@ -1,6 +1,8 @@
 import {
   START_NEW_GAME,
-  TAKE_TURN
+  TAKE_TURN,
+  DECLARE_DRAW,
+  DECLARE_WINNER
 } from '../actions';
 
 const initialState = {
@@ -17,6 +19,10 @@ const game = (state = initialState, action) => {
       return Object.assign({}, state, {board: action.board, running: action.running});
     case TAKE_TURN:
       return Object.assign({}, state, {board: action.board, turn: action.turn});
+    case DECLARE_DRAW:
+      return Object.assign({}, state, {draw: action.draw, running: action.running});
+    case DECLARE_WINNER:
+      return Object.assign({}, state, {winner: action.winner, running: action.running})
     default:
       return state;
   }
