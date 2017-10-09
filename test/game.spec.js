@@ -3,7 +3,7 @@ import deepFreeze from 'deep-freeze';
 
 import game from '../src/reducers';
 import {takeTurn} from '../src/actions';
-import {detectWin} from '../src/helpers';
+import detectWin from '../src/helpers';
 
 const initialState = {
   board: null,
@@ -37,8 +37,16 @@ const drawnBoardState = {
   turn: 'O'
 }
 
-const wonBoardState = {
+const xWonBoardState = {
   board: ['X', 'X', 'O', 'O', 'X', 'O', '', '', 'X'],
+  winner: '',
+  draw: false,
+  running: true,
+  turn: 'O'
+}
+
+const oWonBoardState = {
+  board: ['O', 'O', 'O', '', 'X', 'O', '', '', 'X'],
   winner: '',
   draw: false,
   running: true,
@@ -107,6 +115,19 @@ describe('Test game draw declaration', function() {
   });
 });
 
+describe('Test game win detection', function() {
+  it('detects when a game has been won and returns the winning player', function(done) {
+    expect(detectWin(xWonBoardState.board)).to.equal('X');
+    expect(detectWin(oWonBoardState.board)).to.equal('O');
+    done();
+  });
+  it('returns an empty string if there is no winning player', function(done) {
+    expect(detectWin(populatedBoardState.board)).to.equal('');
+    expect(detectWin(drawnBoardState.board)).to.equal('');
+    done();
+  });
+});
+
 describe('Test game win declaration', function() {
   it('returns a winner when one is detected', function(done) {
     const action = {
@@ -114,8 +135,8 @@ describe('Test game win declaration', function() {
       winner: 'X',
       running: false
     }
-    const winDeclaredState = Object.assign({}, wonBoardState, {winner: 'X', running: false})
-    expect(game(wonBoardState, action)).to.eql(winDeclaredState);
+    const winDeclaredState = Object.assign({}, xWonBoardState, {winner: 'X', running: false})
+    expect(game(xWonBoardState, action)).to.eql(winDeclaredState);
     done();
   });
 });

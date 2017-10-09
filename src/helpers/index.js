@@ -1,3 +1,3 @@
 import {detectWin} from './detectWin';
 
-export default {detectWin};
+export default detectWin;
