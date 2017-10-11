@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import Board from './Board';
+import Board from '../View/Board';
 
-import {takeTurn, declareWinner, declareDraw} from '../actions';
+import {takeTurn, declareWinner, declareDraw} from '../../actions/index';
 
 const mapStateToProps = state => {
   return {

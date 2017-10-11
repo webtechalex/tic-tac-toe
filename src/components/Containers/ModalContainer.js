@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import Modal from './Modal';
+import Modal from '../View/Modal';
 
-import {startNewGame} from '../actions';
+import {startNewGame} from '../../actions/index';
 
 const mapStateToProps = state => {
   return {

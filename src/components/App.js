@@ -3,9 +3,9 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
 import game from '../reducers/gameReducer';
-import Header from './header';
-import GameContainer from './GameContainer';
-import ModalContainer from './ModalContainer';
+import Header from './View/Header';
+import GameContainer from './Containers/GameContainer';
+import ModalContainer from './Containers/ModalContainer';
 
 let store = createStore(game);
 
