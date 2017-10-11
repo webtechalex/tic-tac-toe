@@ -1,6 +1,6 @@
 import React from 'react';
 
-import detectWin from '../../helpers/index';
+import detectWin from '../../../helpers/index';
 
 class Board extends React.Component {
   constructor(props) {

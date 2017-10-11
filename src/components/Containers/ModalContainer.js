@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import Modal from '../View/Modal';
+import Modal from '../View/modal/Modal';
 
 import {startNewGame} from '../../actions/index';
 

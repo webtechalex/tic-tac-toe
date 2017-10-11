@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import Board from '../View/Board';
+import Board from '../View/board/Board';
 
 import {takeTurn, declareWinner, declareDraw} from '../../actions/index';
 
