@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 
 import game from '../reducers/gameReducer';
 import Header from './header';
+import GameContainer from './GameContainer';
 
 let store = createStore(game);
 
@@ -12,6 +13,7 @@ export default function App() {
     <Provider store={store}>
       <div>
         <Header />
+        <GameContainer />
       </div>
     </Provider>
   );
