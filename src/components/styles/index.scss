@@ -1,6 +1,21 @@
+html {
+  font-family: sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
+}
+
+h1, p {
+  margin: 0;
+}
+
+.header {
+  text-align: center;
+  background-color: #00ced1;
+  color: #fff;
+  padding: 20px;
 }
 
 .mask {
@@ -12,8 +27,26 @@ body {
 
 .modal-panel {
   position: relative;
-  margin: 100px auto;
+  margin: 125px auto;
   width: 300px;
   height: 200px;
   background: #fff;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 100px auto;
+  border: 1px solid #555;
+  width: 300px;
+  height: 300px;
+}
+
+.cell {
+  border: 1px solid #555;
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  background: #ddd;
 }

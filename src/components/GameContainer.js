@@ -7,7 +7,8 @@ import {takeTurn, declareWinner, declareDraw} from '../actions';
 
 const mapStateToProps = state => {
   return {
-    board: state.board
+    board: state.board,
+    turn: state.turn
   }
 };
 

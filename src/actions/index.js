@@ -13,6 +13,7 @@ export const startNewGame = () => {
 }
 
 export const takeTurn = (cell, player, board) => {
+  console.log('CALLED ACTION!');
   const newBoard = board.map((item, index) => index === cell ? player : item);
   if (!board[cell]) {
     return {
