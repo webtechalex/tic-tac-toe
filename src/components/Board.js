@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Cell from './Cell';
 import detectWin from '../helpers';
 
 class Board extends React.Component {
