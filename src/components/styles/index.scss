@@ -1,14 +1,25 @@
 html {
   font-family: sans-serif;
+  color: #555;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background: #bbf5f2;
 }
 
 h1, p {
   margin: 0;
+}
+
+button {
+  margin: 20px;
+  border: none;
+  padding: 10px 20px;
+  background: #00ced1;
+  color: #fff;
+  font-size: 20px;
 }
 
 .header {
@@ -30,35 +41,29 @@ h1, p {
   position: relative;
   margin: 125px auto;
   border-radius: 5px;
-  padding: 10px;
-  padding-top: 40px;
+  padding: 40px 10px 10px 10px;
   width: 300px;
   height: 200px;
   background: #fff;
   z-index: 99;
   text-align: center;
   font-size: 20px;
-  color: #555;
   box-sizing: border-box;
-}
-
-.modal-panel button {
-  margin: 20px;
-  border: none;
-  padding: 10px 20px;
-  background: #00ced1;
-  color: #fff;
-  font-size: 20px;
+  box-shadow: 2px 2px 5px #555;
 }
 
 .status {
   margin: 50px auto 0 auto;
+  border-radius: 3px;
+  padding: 10px;
   width: 300px;
+  background: #fff;
   text-align: center;
+  box-shadow: 2px 2px 5px #555;
 }
+
 .status p {
   font-size: 20px;
-  color: #555;
 }
 
 .board {
