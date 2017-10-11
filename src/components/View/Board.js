@@ -22,7 +22,9 @@ class Board extends React.Component {
   }
 
   handleCellClick(i) {
-    this.props.takeTurn(i, this.props.turn, this.props.board);
+    if (!this.props.board[i]) {
+      this.props.takeTurn(i, this.props.turn, this.props.board);
+    }
   }
 
   render() {

@@ -14,12 +14,10 @@ export const startNewGame = () => {
 
 export const takeTurn = (cell, player, board) => {
   const newBoard = board.map((item, index) => index === cell ? player : item);
-  if (!board[cell]) {
-    return {
-      type: TAKE_TURN,
-      board: newBoard,
-      turn: player === 'X' ? 'O' : 'X'
-    }
+  return {
+    type: TAKE_TURN,
+    board: newBoard,
+    turn: player === 'X' ? 'O' : 'X'
   }
 }
 
