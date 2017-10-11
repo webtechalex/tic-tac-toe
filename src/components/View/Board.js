@@ -29,13 +29,16 @@ class Board extends React.Component {
     return (
       <div>
         {this.props.board &&
-        <div className="board">
-          {this.props.board.map((cell, i) => (
-            <div className="cell" key={i} onClick={(e) => this.handleCellClick(i)}>
-              {cell}
+          <div>
+            <div className="status"><p>current player: {this.props.turn}</p></div>
+            <div className="board">
+              {this.props.board.map((cell, i) => (
+                <div className="cell" key={i} onClick={(e) => this.handleCellClick(i)}>
+                  {cell}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
         }
       </div>
     );
