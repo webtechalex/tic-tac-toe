@@ -1,23 +1,46 @@
 import React from 'react';
 
 import Cell from './Cell';
+import detectWin from '../helpers';
 
-const Board = props => {
-  const handleCellClick = (i) => props.takeTurn(i, props.turn, props.board);
+class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCellClick = this.handleCellClick.bind(this);
+  }
 
-  return (
-    <div>
-      {props.board &&
+  componentWillUpdate(nextProps) {
+    let checkWinner;
+    if (nextProps.board) {
+      checkWinner = detectWin(nextProps.board);
+      if (checkWinner) {
+        nextProps.declareWinner(checkWinner);
+      }
+      if (!checkWinner && nextProps.board.every(cell => cell)) {
+        nextProps.declareDraw();
+      }
+    }
+  }
+
+  handleCellClick(i) {
+    this.props.takeTurn(i, this.props.turn, this.props.board);
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.board &&
         <div className="board">
-          {props.board.map((cell, i) => (
-            <div className="cell" key={i} onClick={(e) => handleCellClick(i)}>
+          {this.props.board.map((cell, i) => (
+            <div className="cell" key={i} onClick={(e) => this.handleCellClick(i)}>
               {cell}
             </div>
           ))}
         </div>
-      }
-    </div>
-  );
+        }
+      </div>
+    );
+  }
 };
 
 export default Board;
