@@ -8,7 +8,7 @@ const Modal = props => {
         <div className="mask">
           <div className="modal-panel">
             {winner && <p>{`Winner ${winner}`}</p>}
-            {draw && <p>It's a draw!</p>}
+            {draw && <p>It&apos;s a draw!</p>}
             <p>Start a new game...</p>
             <button onClick={startNewGame}>New Game</button>
           </div>
