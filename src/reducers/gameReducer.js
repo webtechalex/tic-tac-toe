@@ -16,7 +16,7 @@ const initialState = {
 const game = (state = initialState, action) => {
   switch (action && action.type) {
     case START_NEW_GAME:
-      return Object.assign({}, state, {board: action.board, running: action.running});
+      return Object.assign({}, initialState, {board: action.board, running: action.running});
     case TAKE_TURN:
       return Object.assign({}, state, {board: action.board, turn: action.turn});
     case DECLARE_DRAW:

@@ -4,7 +4,7 @@
   "description": "a tic-tac-toe game made with React and Redux",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-polyfill --compilers js:babel-register --recursive test/*.js",
+    "test": "mocha -w --require babel-polyfill --compilers js:babel-register --recursive test/*.js",
     "start": "webpack-dev-server",
     "build": "webpack"
   },

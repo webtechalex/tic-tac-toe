@@ -53,6 +53,22 @@ const oWonBoardState = {
   turn: 'O'
 }
 
+const oWonConfirmedState = {
+  board: ['O', 'O', 'O', '', 'X', 'O', '', '', 'X'],
+  winner: 'O',
+  draw: false,
+  running: false,
+  turn: 'X'
+}
+
+const drawConfirmedBoardState = {
+  board: ['X', 'X', 'O', 'O', 'O', 'X', 'X', 'O', 'X'],
+  winner: '',
+  draw: true,
+  running: true,
+  turn: 'X'
+}
+
 describe('Test environment', function() {
   it('should run a test', function(done) {
     expect(true).to.equal(true);
@@ -73,13 +89,30 @@ describe('Test initial game board state', function() {
     const action = {
       type: 'START_NEW_GAME',
       board: newBoard,
-      running: true
+      running: true,
+      winner: '',
+      draw: false
     };
 
     deepFreeze(action);
 
     expect(game(initialState, action)).to.eql(runningState);
     done();
+  });
+  it('should receive initialState so that "winner" and "draw" are reset for a new game', function() {
+    const newBoard = Array.from({length: 9}, item => '');
+    const action = {
+      type: 'START_NEW_GAME',
+      board: newBoard,
+      running: true,
+      winner: '',
+      draw: false
+    };
+
+    deepFreeze(action);
+
+    expect(game(oWonConfirmedState, action)).to.eql(runningState);
+    expect(game(drawConfirmedBoardState, action)).to.eql(runningState);
   });
 });
 

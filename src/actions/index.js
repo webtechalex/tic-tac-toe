@@ -8,6 +8,8 @@ export const startNewGame = () => {
   return {
     type: START_NEW_GAME,
     board: newBoard,
+    winner: '',
+    draw: false,
     running: true
   }
 }
