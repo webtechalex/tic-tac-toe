@@ -1,19 +1,17 @@
 import React from 'react';
 
+import GameState from './GameState';
+
 const Modal = props => {
   const {winner, draw, running, startNewGame} = props;
-  return (
-    <div>
-      {!running &&
-        <div className="mask">
-          <div className="modal-panel">
-            {winner && <p>{`Winner ${winner}`}</p>}
-            {draw && <p>It&apos;s a draw!</p>}
-            <p>Start a new game...</p>
-            <button onClick={startNewGame}>New Game</button>
-          </div>
-        </div>
-      }
+
+  return (running) ? null : (
+    <div className="mask">
+      <div className="modal-panel">
+        {GameState({winner, draw})}
+        <p>Start a new game...</p>
+        <button onClick={startNewGame}>New Game</button>
+      </div>
     </div>
   );
 };
